@@ -17,7 +17,8 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/geometry2.png');
+    /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
 
@@ -32,6 +33,7 @@ h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
+
 
 /*
  * Styles for the deck of cards
@@ -85,6 +87,7 @@ h1 {
     background: #ff9191;
 }
 
+
 /*
  * Styles for the Score Panel
  */
@@ -115,4 +118,71 @@ h1 {
 .timer {
     float: right;
     margin-right: 20px;
+}
+
+/* 
+* Styles for the modal
+*/
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #dfffe8;
+    margin: 12% auto;
+    padding: 20px;
+    width: 70%;
+    font-size: 18px;
+    border-radius: 5px;
+    letter-spacing: 1.5px;
+}
+
+.temp-content {
+    text-align: center;
+}
+
+.temp-content span {
+    display: block;
+}
+
+.close-modal {
+    color: #ffffff;
+    height: 35px;
+    font-size: 18px;
+    text-align: center;
+    background-color: #5bbd5b;
+    border: none;
+    border-radius: 3px;
+    margin: 20px;
+}
+
+.close-modal:hover {
+    background-color: #89e089;
+}
+
+.show-moves {
+    margin: 10px;
+}
+
+.show-time {
+    margin: 10px;
+}
+
+.check-mark {
+    font-size: 80px;
+    color: #5bbd5b;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: black;
+    cursor: pointer;
 }

@@ -15,6 +15,7 @@ var mins = 0,
     click = 0,
     done = 0,
     moves = 0,
+    stars = 0,
     interval, firstClick = 0,
     openedCards = [],
     checkClasses = [];
@@ -66,8 +67,10 @@ function startTimer() {
 function checkStars() {
     if (moves === 11) {
         $('.stars').children()[2].remove();
+        stars = 2;
     } else if (moves === 15) {
         $('.stars').children()[1].remove();
+        stars = 1;
     }
 }
 
@@ -77,8 +80,15 @@ function resetGame(type) {
     secs = secs < 10 ? ('0' + secs) : secs;
     mins = mins < 10 ? ('0' + mins) : mins;
     var stars = moves < 11 ? (3) : (moves < 15 ? (2) : (1));
+    startGame();
     if (type) {
-        alert('Congratulations! You won.\nTime taken: ' + mins + ' : ' + secs + '.\nYou took in total ' + moves + ' moves.\n Total Stars: ' + stars + '.');
+        $('.show-time').html('Time taken  ' + mins + ' : ' + secs);
+        $('.show-moves').html('Total moves  ' + moves);
+        $('.show-star').children().remove();
+        for (i = 0; i < stars; i++) {
+            $('.show-star').append('<i class="fa fa-star"></i>');
+        }
+        $('.modal').css('display', 'block')
     }
     mins = secs = click = firstClick = moves = done = 0;
     domSecs.text('00');
@@ -86,7 +96,6 @@ function resetGame(type) {
     domMoves.text('0');
     $('.stars').html('<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>');
     $('.deck li').removeClass('match open show');
-    startGame();
 }
 
 //handles the functionality of hiding the cards if they did not match.
@@ -133,6 +142,10 @@ function checkMatchingCards() {
         }, 300);
     }
 }
+
+$('.close-modal').on('click', function() {
+    $('.modal').css('display', 'none');
+});
 
 //Listening for click 'event' on 'reset' button
 $('.restart').on('click', function() { resetGame(false) });
